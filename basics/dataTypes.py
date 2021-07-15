@@ -18,7 +18,6 @@ mystring[3:6] # Start from "def"
 print(mystring[::2]) # acegikm
 mystring[::-1] # Reverse string
 
-
 # Strings are immutable
 name = 'Sam'
 # name[0] = 'P' doesn't work
@@ -26,12 +25,10 @@ name = 'Sam'
 last_letters = name[1:]
 new_name = 'P' + last_letters # 'Pam'
 
-
 # String concatenation
 # Can be multiplied
 letter = 'z'
 letter * 10 # 'zzzzzzzzzz'
-
 
 # String interpolation
 # Insert a string using .format()
@@ -40,6 +37,11 @@ print('this is a string {}'.format('INSERTED'))
 # You can pass an index of a variable
 print('this {2} {1} {0}'.format('fox', 'brown', 'quick')) # The quick brown fox
 print('this {q} {b} {f}'.format(f='fox',b='brown',q='quick')) # The quick brown fox
+
+
+# ==========
+# Formatting
+# ==========
 
 # Float formatting
 # {value:width.precision f}
@@ -52,3 +54,38 @@ print('The result was {r:1.3f}'.format(r=result)) # 0.129
 # f_string
 name = 'Jose'
 print(f'The name is {name}')
+
+
+# ==========
+# List
+# ==========
+my_list = ['one', 2, 3.1]
+len(my_list) # 3
+
+# THe slicing operator can be used with the lists too
+my_list[0] # 'one'
+my_list[1:] # 2, 3.1
+
+# Lists can be concatenated
+another_list = ['four', 5]
+new_list = my_list + another_list
+
+# Unlike strings, elements are mutable
+new_list[0] = 1
+new_list.append(6)
+
+
+# ==========
+# Tuples
+# ==========
+t = (1,2,3)
+type(t) # Tuple
+list = [1,2,3]
+type(list) # List
+
+t = ('a', 'a', 'b')
+t.count('a') # 2
+t.index('a') # 0
+
+# Unlike lists, elements are immutable in tuples
+# t[0] = 'new' doesn't work
