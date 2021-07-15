@@ -89,3 +89,18 @@ t.index('a') # 0
 
 # Unlike lists, elements are immutable in tuples
 # t[0] = 'new' doesn't work
+
+
+# ==========
+# Sets
+# ==========
+# Sets are unordered collections of unique elements.
+my_set = set()
+my_set.add(1)
+my_set.add(2)
+# my_set.add(1) will be {1,2}
+
+# A list can be casted to a set
+# Duplicates are removed
+list_to_cast = [1,1,1,1,1,2,2,2,2,3,3,3]
+set(list_to_cast) # {1,2,3}
