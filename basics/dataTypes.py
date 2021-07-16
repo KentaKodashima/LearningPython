@@ -104,3 +104,48 @@ my_set.add(2)
 # Duplicates are removed
 list_to_cast = [1,1,1,1,1,2,2,2,2,3,3,3]
 set(list_to_cast) # {1,2,3}
+
+
+
+# ==========
+# File input/output
+# ==========
+# Getting current dir
+#   https://stackoverflow.com/questions/5137497/find-current-directory-and-files-directory
+import os
+
+current_dir = os.path.dirname(os.path.realpath(__file__))
+
+myfile = open(f'{current_dir}/test.txt')
+
+# Use read() to get all text in a single string
+contents = myfile.read()
+print(contents)
+
+# After using read() once, the cursor reaches at the end of the file
+# Use seek() to reset the cursor to the beginning to read the file again
+myfile.seek(0)
+
+# Use readlines() to get the list of lines
+myfile.readlines()
+
+# The opened file needs to be closed at the end
+myfile.close()
+
+# To avoid errors caused by not closing the file,
+#   you can use the 'with' statement
+with open(f'{current_dir}/test.txt') as my_new_file:
+  text = my_new_file.read()
+
+# open() method
+# mode='r' is read only
+# mode='w' is write only (will overwrite files or create new)
+# mode='a' is append only (will add on to files)
+# mode='r+' is reading and writing
+# mode='w+' is writing and reading (overwrites existing files or create a new file)
+
+with open(f'{current_dir}/test.txt', mode='r') as f:
+  print(f.read())
+
+with open(f'{current_dir}/test.txt', mode='a') as f:
+  f.write('Appending texts...')
