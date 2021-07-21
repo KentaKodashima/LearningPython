@@ -74,6 +74,26 @@ new_list = my_list + another_list
 new_list[0] = 1
 new_list.append(6)
 
+# List comprehension
+forlist = []
+compstr = 'hello'
+
+# typical way
+for char in compstr:
+  forlist.append(char)
+
+# Comprehensive way
+complist = [char for char in compstr]
+complist = [num for num in range(0,11)]
+complist = [num**2 for num in range(0,11)] # Squared version
+celcius = [0,10,20,34.5]
+fahrenheit = [((9/5)*temp+32) for temp in celcius]
+# if statement inside a comprehension
+complist = [x for x in range(0,11) if x % 2 == 0] # Only the even numbers
+# if else statement inside a comprehension (not so readbable)
+results = [x if x % 2 == 0 else 'Odd' for x in range(0,11)]
+# Nested loop inside a comprehension (not so readbable)
+complist = [x*y for x in [2,4,6] for y in [1,10,1000]]
 
 # ==========
 # Tuples
