@@ -183,6 +183,7 @@ def summer_69(arr):
 print(summer_69([1, 3, 5]))
 print(summer_69([4, 5, 6, 7, 8, 9]))
 print(summer_69([2, 1, 6, 9, 11]))
+print('\n')
 
 # CHALLENGING PROBLEMS
 
@@ -191,7 +192,22 @@ print(summer_69([2, 1, 6, 9, 11]))
 #  spy_game([1,0,2,4,0,5,7]) --> True
 #  spy_game([1,7,2,0,4,5,0]) --> False
 def spy_game(nums):
-  pass
+  target = [7,0,0]
+  for num in nums:
+    if len(target) != 0 and num == target[len(target)-1]:
+      target.pop()
+  return len(target) == 0
+print(spy_game([1,2,4,0,0,7,5]))
+print(spy_game([1,0,2,4,0,5,7]))
+print(spy_game([1,7,2,0,4,5,0]))
+print('\n')
+# Refactored
+def spy_game2(nums):
+  code = [0,0,7,'x']
+  for num in nums:
+    if num == code[0]:
+      code.pop(0)   # code.remove(num) also works
+  return len(code) == 1
 
 # COUNT PRIMES: Write a function that returns the number of prime numbers that exist up to and including a given number
 # count_primes(100) --> 25
@@ -215,7 +231,24 @@ def count_primes(num):
   return counter
 print(count_primes(100))
 print('\n')
-
+# Refactored
+# Don't need to check 1, 2 and even nums: range(3,x,2)
+# for else statement
+#   if the for statement never breaks, else block will be executed
+def count_primes(num):
+  primes = [2]
+  x = 3
+  if num < 2:  # for the case of num = 0 or 1
+    return 0
+  while x <= num:
+    for y in range(3,x,2):  # test all odd factors up to x-1
+      if x%y == 0:
+        x += 2
+        break
+    else:
+      primes.append(x)
+      x += 2
+  return len(primes)
 
 # PRINT BIG: Write a function that takes in a single letter, and returns a 5x5 representation of that letter
 # For purposes of this exercise, input would be from 'a' to 'e'.
