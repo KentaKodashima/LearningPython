@@ -57,3 +57,49 @@ myfunc(fruit='apple',veggie='onions')
 def myfunc(*args,**kwargs):
   print(f'I would like {args[0]} {kwargs["food"]}')
 myfunc(10,20,30,food='pizza',fruit='apple')
+
+
+
+# ==========
+# Lambda expressions
+# ==========
+def slicer(str):
+  if len(str) % 2 == 0:
+    return 'Even'
+  else:
+    return 'Odd'
+names = ['Andy', 'Eve', 'Sally']
+results = list(map(slicer,names))
+
+def is_even(num):
+  return num % 2 == 0
+nums = [1,2,3,4,5,6]
+even_nums = list(filter(is_even,nums))
+for n in filter(is_even,nums):
+  print(n)
+
+# Lambda is anonymous functions
+square = lambda num: num ** 2
+square(5)
+
+# Lambda is used when you want to have an one time function
+list(map(lambda num: num ** 2, nums))
+list(map(lambda x: x[::-1], names))
+list(filter(lambda num: num % 2 == 0, nums))
+
+
+
+# ==========
+# Scopes
+# ==========
+# Global variables are accessible with the 'global' keyword 
+# Though you can do this, it's a bad practice
+# It's better to take the global variables as arguments because it's easier to debug
+x = 50
+def func():
+  global x
+  print(f'X is {x}')
+  x = 200
+  print(f'Locally changed global X to {x}')
+func()
+print(x) # now it's 200
